@@ -155,3 +155,8 @@ Jiya Singh
 
 GitHub:
 https://github.com/jiya-singhThakur
+
+##Screenshots
+<img width="1920" height="1200" alt="Screenshot 2026-06-02 005547" src="https://github.com/user-attachments/assets/d3737408-febd-487f-b073-ca09d9d48364" />
+
+
