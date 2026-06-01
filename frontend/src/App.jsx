@@ -23,17 +23,18 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const seedData = async () => {
-      const productRes = await axios.get(`${API}/products/`);
-      const customerRes = await axios.get(`${API}/customers/`);
+useEffect(() => {
+  const seedData = async () => {
+    const productRes = await axios.get(`${API}/products/`);
+    const customerRes = await axios.get(`${API}/customers/`);
+    const orderRes = await axios.get(`${API}/orders/`);
 
-      if (productRes.data.length === 0) {
-        await axios.post(`${API}/products/`, {
-          name: "Laptop",
-          sku: "LAP001",
-          price: 50000,
-          quantity: 6,
+    if (productRes.data.length === 0) {
+      await axios.post(`${API}/products/`, {
+        name: "Laptop",
+        sku: "LAP001",
+        price: 50000,
+        quantity: 6,
       });
 
       await axios.post(`${API}/products/`, {
@@ -81,13 +82,35 @@ function App() {
       await axios.post(`${API}/customers/`, {
         name: "Nitya Sharma",
         email: "nitya@example.com",
-        phone: "888899999",
+        phone: "8888999999",
       });
 
       await axios.post(`${API}/customers/`, {
-        name: "sonu dev",
+        name: "Sonu Dev",
         email: "sonu@example.com",
-        phone: "777777888",
+        phone: "7777778888",
+      });
+    }
+
+    if (orderRes.data.length === 0) {
+      await axios.post(`${API}/orders/`, {
+        customer_id: 1,
+        items: [
+          {
+            product_id: 1,
+            quantity: 1,
+          },
+        ],
+      });
+
+      await axios.post(`${API}/orders/`, {
+        customer_id: 2,
+        items: [
+          {
+            product_id: 2,
+            quantity: 1,
+          },
+        ],
       });
     }
 
