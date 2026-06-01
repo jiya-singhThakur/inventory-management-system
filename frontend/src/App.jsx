@@ -24,10 +24,80 @@ function App() {
   };
 
   useEffect(() => {
+    const seedData = async () => {
+      const productRes = await axios.get(`${API}/products/`);
+      const customerRes = await axios.get(`${API}/customers/`);
+
+      if (productRes.data.length === 0) {
+        await axios.post(`${API}/products/`, {
+          name: "Laptop",
+          sku: "LAP001",
+          price: 50000,
+          quantity: 6,
+      });
+
+      await axios.post(`${API}/products/`, {
+        name: "Mouse",
+        sku: "MOU001",
+        price: 500,
+        quantity: 3,
+      });
+
+      await axios.post(`${API}/products/`, {
+        name: "Keyboard",
+        sku: "KEY001",
+        price: 900,
+        quantity: 4,
+      });
+
+      await axios.post(`${API}/products/`, {
+        name: "Printer",
+        sku: "PRI008",
+        price: 500,
+        quantity: 1,
+      });
+
+      await axios.post(`${API}/products/`, {
+        name: "CPU",
+        sku: "CPU077",
+        price: 5000,
+        quantity: 1,
+      });
+    }
+
+    if (customerRes.data.length === 0) {
+      await axios.post(`${API}/customers/`, {
+        name: "Jiya Singh",
+        email: "jiya@example.com",
+        phone: "8888888888",
+      });
+
+      await axios.post(`${API}/customers/`, {
+        name: "Priya Sharma",
+        email: "priya@example.com",
+        phone: "9999999999",
+      });
+
+      await axios.post(`${API}/customers/`, {
+        name: "Nitya Sharma",
+        email: "nitya@example.com",
+        phone: "888899999",
+      });
+
+      await axios.post(`${API}/customers/`, {
+        name: "sonu dev",
+        email: "sonu@example.com",
+        phone: "777777888",
+      });
+    }
+
     loadProducts();
     loadCustomers();
     loadOrders();
-  }, []);
+  };
+
+  seedData();
+}, []);
 
   const createProduct = async () => {
     try {
