@@ -1,0 +1,6 @@
+frontend
+_pycache_
+*.db
+.env
+.git
+node_modules
